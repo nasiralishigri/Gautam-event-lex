@@ -8,9 +8,8 @@ import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import Web3 from "web3";
 import { ICU, BEP20, USDT, EXAM } from "../../utils/web3.js";
-import EventsList from "../events/events.jsx";
-import PoolIncome from "../events/poolIncome.jsx";
-// import { baseUrl, ClientBaseURL } from "../../utils/confix";
+import SponserIncome from "../events/sponsor-income/sponser-income.jsx";
+import LevelIncome from "../events/level-income/level-income.jsx";
 
 const Dashboard = () => {
   const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
@@ -760,7 +759,8 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <PoolIncome account={account} web3={web3} />
+          <SponserIncome account={account} web3={web3} className="" />
+          <LevelIncome account={account} web3={web3} className="" />
         </>
       ) : (
         ""
@@ -876,7 +876,6 @@ const Dashboard = () => {
               )}
             </div>
           </div>
-          <EventsList />
           <div> </div>
         </>
       )}

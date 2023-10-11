@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
-import { ICU } from "../../utils/web3.js";
+import { ICU } from "../src/utils/web3.js";
 
 const customStyles = {
   option: (provided, state) => ({

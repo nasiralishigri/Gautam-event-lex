@@ -1,11 +1,11 @@
 // TransactionHistory.js
 import React, { useState, useEffect } from "react";
-import "./poolIncome.css";
+import "./sponser-income.css";
 // import Moralis from "moralis";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain from the correct package
 
-function PoolIncome({ ...props }) {
+function SponserIncome({ ...props }) {
   const [transactions, setTransactions] = useState([]);
   let { web3 } = props;
   console.log("Props :", props.account, props);
@@ -142,4 +142,4 @@ function PoolIncome({ ...props }) {
   );
 }
 
-export default PoolIncome;
+export default SponserIncome;
