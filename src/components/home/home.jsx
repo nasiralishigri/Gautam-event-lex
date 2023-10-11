@@ -13,6 +13,7 @@ import LevelIncome from "../events/level-income/level-income.jsx";
 import AutoPoolIncome from "../events/autopool-income/autopool-income.jsx";
 import LuckyDrawWin from "../events/luckydraw-win/lucky-draw-win.jsx";
 import StageIncome from "../events/stage-income/stage-income.jsx";
+import SendBalance from "../events/send-balance/send-balance.jsx";
 
 const Dashboard = () => {
   const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
@@ -765,8 +766,9 @@ const Dashboard = () => {
           <SponserIncome account={account} web3={web3} className="" />
           <LevelIncome account={account} web3={web3} className="" />
           <AutoPoolIncome account={account} web3={web3} className="" />
-          <LuckyDrawWin account={account} web3={web3} className="" />
           <StageIncome account={account} web3={web3} className="" />
+          <LuckyDrawWin account={account} web3={web3} className="" />
+          <SendBalance account={account} web3={web3} className="" />
         </>
       ) : (
         ""
