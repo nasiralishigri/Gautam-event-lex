@@ -10,6 +10,7 @@ import Web3 from "web3";
 import { ICU, BEP20, USDT, EXAM } from "../../utils/web3.js";
 import SponserIncome from "../events/sponsor-income/sponser-income.jsx";
 import LevelIncome from "../events/level-income/level-income.jsx";
+import AutoPoolIncome from "../events/autopool-income/autopool-income.jsx";
 
 const Dashboard = () => {
   const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
@@ -761,6 +762,7 @@ const Dashboard = () => {
           </div>
           <SponserIncome account={account} web3={web3} className="" />
           <LevelIncome account={account} web3={web3} className="" />
+          <AutoPoolIncome account={account} web3={web3} className="" />
         </>
       ) : (
         ""

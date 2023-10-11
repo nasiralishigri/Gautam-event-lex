@@ -1,0 +1,54 @@
+.PoolIncome {
+    padding: 20px;
+    background-color: #426cea;
+    max-height: calc(100vh - 100px); /* Adjust as needed */
+    overflow-y: auto;
+  }
+  
+  .PoolIncome h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+    color: #08f074;
+  }
+  
+  .PoolIncome label {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  
+  .PoolIncome select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #1e2da1;
+    color: #ffffff;
+  }
+  
+  .PoolIncome table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .PoolIncome th {
+    background-color: #394465;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .PoolIncome td {
+    background-color: #1e2da1;
+    color: #ffffff;
+    padding: 10px;
+  }
+  
+  .PoolIncome .scrollable-column {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
