@@ -1,13 +1,12 @@
 // TransactionHistory.js
 import React, { useState, useEffect } from "react";
-import "./autopool-income.css";
+import "./lucky-draw-win.css";
 // import Moralis from "moralis";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain from the correct package
 
-function AutoPoolIncome({ ...props }) {
+function LuckyDrawWin({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  let { web3 } = props;
   console.log("Props :", props.account, props);
   useEffect(() => {
     const runApp = async () => {
@@ -19,38 +18,39 @@ function AutoPoolIncome({ ...props }) {
       const address = "0x7716dB181506939Ed6Ba6e35755A8668D8668D9A"; //"0xe184a68428072f0102f073a098af8ee7705519dc";
       const chain = EvmChain.BSC_TESTNET;
       const topic =
-        "0xbd53f67cfad1b161e1857c840f0f3430a080b8cf8b77f4183d4302c5daed15b4";
+        "0x2272193d6f1e216523e63936bf16e07f656833f967ff981f23695633350217c0";
       const abi = {
         anonymous: false,
         inputs: [
           {
             indexed: true,
-            internalType: "address",
-            name: "sender",
-            type: "address",
-          },
-          {
-            indexed: true,
-            internalType: "address",
-            name: "referrer",
-            type: "address",
-          },
-          {
-            indexed: true,
             internalType: "uint256",
-            name: "height",
+            name: "winner",
             type: "uint256",
           },
           {
             indexed: false,
             internalType: "uint256",
-            name: "time",
+            name: "luckyReward",
+            type: "uint256",
+          },
+          {
+            indexed: true,
+            internalType: "uint256",
+            name: "startID",
+            type: "uint256",
+          },
+          {
+            indexed: true,
+            internalType: "uint256",
+            name: "endID",
             type: "uint256",
           },
         ],
-        name: "AutopoolIncome",
+        name: "LuckyDrawWin",
         type: "event",
       };
+
       let limit = 10000;
       const response = await Moralis.EvmApi.events.getContractEvents({
         address,
@@ -61,10 +61,10 @@ function AutoPoolIncome({ ...props }) {
       });
       console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
-        user: transaction.data.sender,
-        referrer: transaction.data.referrer,
-        time: new Date(transaction.data.time * 1000).toISOString(), // Adjust the format as needed
-        height: transaction.data.height,
+        winner: transaction.data.winner,
+        luckyReward: transaction.data.luckyReward,
+        endID: transaction.data.endID, // Adjust the format as needed
+        startID: transaction.data.startID,
         transactionHash: transaction.transaction_hash,
       }));
       console.log("Transaction:", datas);
@@ -80,49 +80,40 @@ function AutoPoolIncome({ ...props }) {
   };
 
   console.log("Transaction Data: ", transactions);
-  const [filter, setFilter] = useState("All");
-  const filteredTransactions =
-    filter === "referrer"
-      ? transactions.filter(
-          (transaction) =>
-            transaction.referrer.toLowerCase() === props.account.toLowerCase()
-        )
-      : transactions.filter(
-          (transaction) =>
-            transaction.user.toLowerCase() === props.account.toLowerCase()
-        );
-  console.log("Filter Transation", filteredTransactions);
+  // const [filter, setFilter] = useState("All");
+  // const filteredTransactions =
+  //   filter === "referrer"
+  //     ? transactions.filter(
+  //         (transaction) =>
+  //           transaction.referrer.toLowerCase() === props.account.toLowerCase()
+  //       )
+  //     : transactions.filter(
+  //         (transaction) =>
+  //           transaction.user.toLowerCase() === props.account.toLowerCase()
+  //       );
+  // console.log("Filter Transation", filteredTransactions);
 
   return (
     <div className="PoolIncome">
-      <h1>Transaction History Of Auto Pool Income</h1>
+      <h1>Transaction History Of Lucky Draw Win</h1>
 
-      <div>
-        <label>
-          Filter by Referrer:
-          <select onChange={(e) => setFilter(e.target.value)}>
-            <option value="No">No</option>
-            <option value="referrer">Yes</option>
-          </select>
-        </label>
-      </div>
       <table>
         <thead>
           <tr>
-            <th>Sender</th>
-            <th>Referrer</th>
-            <th>Time</th>
-            <th>Height</th>
+            <th>Winner</th>
+            <th>Luky Reward</th>
+            <th>Start ID</th>
+            <th>End ID</th>
             <th>Transaction Hash</th>
           </tr>
         </thead>
         <tbody>
-          {filteredTransactions.map((transaction) => (
-            <tr key={transaction.user}>
-              <td>{transaction.user}</td>
-              <td>{transaction.referrer}</td>
-              <td>{transaction.time}</td>
-              <td>{transaction.height}</td>
+          {transactions.map((transaction) => (
+            <tr key={transaction.luckyReward}>
+              <td>{transaction.winner}</td>
+              <td>{transaction.luckyReward}</td>
+              <td>{transaction.startID}</td>
+              <td>{transaction.endID}</td>
               <td className="scrollable-column">
                 <button
                   onClick={() => handleLinkClick(transaction.transactionHash)}
@@ -138,4 +129,4 @@ function AutoPoolIncome({ ...props }) {
   );
 }
 
-export default AutoPoolIncome;
+export default LuckyDrawWin;

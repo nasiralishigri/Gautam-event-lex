@@ -95,7 +95,7 @@ function LevelIncome({ ...props }) {
 
   return (
     <div className="PoolIncome">
-      <h1>Transaction History Of SponsorIncome</h1>
+      <h1>Transaction History Of Level Income</h1>
 
       <div>
         <label>

@@ -1,13 +1,12 @@
 // TransactionHistory.js
 import React, { useState, useEffect } from "react";
-import "./autopool-income.css";
+import "./stage-income.css";
 // import Moralis from "moralis";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain from the correct package
 
-function AutoPoolIncome({ ...props }) {
+function StageIncome({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  let { web3 } = props;
   console.log("Props :", props.account, props);
   useEffect(() => {
     const runApp = async () => {
@@ -19,36 +18,36 @@ function AutoPoolIncome({ ...props }) {
       const address = "0x7716dB181506939Ed6Ba6e35755A8668D8668D9A"; //"0xe184a68428072f0102f073a098af8ee7705519dc";
       const chain = EvmChain.BSC_TESTNET;
       const topic =
-        "0xbd53f67cfad1b161e1857c840f0f3430a080b8cf8b77f4183d4302c5daed15b4";
+        "0xe655a13ddd4b7f0f56febd549e2d4818002460dad585dd4f7af4ab1d231fa553";
       const abi = {
         anonymous: false,
         inputs: [
           {
             indexed: true,
             internalType: "address",
-            name: "sender",
+            name: "_user",
             type: "address",
           },
           {
             indexed: true,
             internalType: "address",
-            name: "referrer",
+            name: "_referral",
             type: "address",
           },
           {
             indexed: true,
             internalType: "uint256",
-            name: "height",
+            name: "_level",
             type: "uint256",
           },
           {
             indexed: false,
             internalType: "uint256",
-            name: "time",
+            name: "_time",
             type: "uint256",
           },
         ],
-        name: "AutopoolIncome",
+        name: "stageIncome",
         type: "event",
       };
       let limit = 10000;
@@ -61,10 +60,13 @@ function AutoPoolIncome({ ...props }) {
       });
       console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
-        user: transaction.data.sender,
-        referrer: transaction.data.referrer,
-        time: new Date(transaction.data.time * 1000).toISOString(), // Adjust the format as needed
-        height: transaction.data.height,
+        user: transaction.data._user,
+        referrer: transaction.data._referral,
+        time: new Date(transaction.data._time * 1000).toISOString(), // Adjust the format as needed
+
+        level: transaction.data._level,
+
+        // identity: transaction.data.Identity,
         transactionHash: transaction.transaction_hash,
       }));
       console.log("Transaction:", datas);
@@ -76,6 +78,7 @@ function AutoPoolIncome({ ...props }) {
 
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
+    console.log("Tar:", url);
     window.open(baseUrl + url, "_blank");
   };
 
@@ -95,7 +98,7 @@ function AutoPoolIncome({ ...props }) {
 
   return (
     <div className="PoolIncome">
-      <h1>Transaction History Of Auto Pool Income</h1>
+      <h1>Transaction History Of Stage Income</h1>
 
       <div>
         <label>
@@ -109,10 +112,10 @@ function AutoPoolIncome({ ...props }) {
       <table>
         <thead>
           <tr>
-            <th>Sender</th>
+            <th>User</th>
             <th>Referrer</th>
             <th>Time</th>
-            <th>Height</th>
+            <th>Level</th>
             <th>Transaction Hash</th>
           </tr>
         </thead>
@@ -122,7 +125,7 @@ function AutoPoolIncome({ ...props }) {
               <td>{transaction.user}</td>
               <td>{transaction.referrer}</td>
               <td>{transaction.time}</td>
-              <td>{transaction.height}</td>
+              <td>{transaction.level}</td>
               <td className="scrollable-column">
                 <button
                   onClick={() => handleLinkClick(transaction.transactionHash)}
@@ -138,4 +141,4 @@ function AutoPoolIncome({ ...props }) {
   );
 }
 
-export default AutoPoolIncome;
+export default StageIncome;
