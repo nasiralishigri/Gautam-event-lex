@@ -98,7 +98,7 @@ function SponserIncome({ ...props }) {
   console.log("Filter Transation", filteredTransactions);
 
   return (
-    <div className="PoolIncome">
+    <div className="PoolIncome-Sponsor">
       <h1>Transaction History Of Sponsor Income</h1>
 
       <div>
@@ -128,11 +128,12 @@ function SponserIncome({ ...props }) {
               <td>{transaction.time}</td>
               <td>{transaction.identity}</td>
               <td className="scrollable-column">
-                <button
+                <a
                   onClick={() => handleLinkClick(transaction.transactionHash)}
+                  className="transaction-link"
                 >
                   {transaction.transactionHash}
-                </button>
+                </a>
               </td>
             </tr>
           ))}

@@ -94,7 +94,7 @@ function AutoPoolIncome({ ...props }) {
   console.log("Filter Transation", filteredTransactions);
 
   return (
-    <div className="PoolIncome">
+    <div className="PoolIncome-autopool">
       <h1>Transaction History Of Auto Pool Income</h1>
 
       <div>
@@ -124,11 +124,12 @@ function AutoPoolIncome({ ...props }) {
               <td>{transaction.time}</td>
               <td>{transaction.height}</td>
               <td className="scrollable-column">
-                <button
+                <a
                   onClick={() => handleLinkClick(transaction.transactionHash)}
+                  className="transaction-link"
                 >
                   {transaction.transactionHash}
-                </button>
+                </a>
               </td>
             </tr>
           ))}

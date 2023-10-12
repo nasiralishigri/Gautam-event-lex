@@ -1,23 +1,23 @@
-.PoolIncome {
+.PoolIncome-Stage {
     padding: 20px;
-    background-color: #426cea;
+    background-color: #0de1af;
     max-height: calc(100vh - 100px); /* Adjust as needed */
     overflow-y: auto;
   }
   
-  .PoolIncome h1 {
+  .PoolIncome-Stage h1 {
     font-size: 34px;
     margin-bottom: 20px;
     color: #08f074;
   }
   
-  .PoolIncome label {
+  .PoolIncome-Stage label {
     display: block;
     margin-bottom: 10px;
     color: #ffffff;
   }
   
-  .PoolIncome select {
+  .PoolIncome-Stage select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ffffff;
@@ -26,13 +26,13 @@
     color: #ffffff;
   }
   
-  .PoolIncome table {
+  .PoolIncome-Stage table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
   }
   
-  .PoolIncome th {
+  .PoolIncome-Stage th {
     background-color: #394465;
     color: #ffffff;
     font-weight: bold;
@@ -40,15 +40,26 @@
     text-align: left;
   }
   
-  .PoolIncome td {
+  .PoolIncome-Stage td {
     background-color: #1e2da1;
     color: #ffffff;
     padding: 10px;
   }
   
-  .PoolIncome .scrollable-column {
+  .PoolIncome-Stage .scrollable-column {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  
+  .transaction-link {
+    text-decoration: underline;
+    /* color: blue; */
+    cursor: pointer;
+  }
+
+.transaction-link:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
   

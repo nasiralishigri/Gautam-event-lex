@@ -97,7 +97,7 @@ function StageIncome({ ...props }) {
   console.log("Filter Transation", filteredTransactions);
 
   return (
-    <div className="PoolIncome">
+    <div className="PoolIncome-Stage">
       <h1>Transaction History Of Stage Income</h1>
 
       <div>
@@ -127,11 +127,12 @@ function StageIncome({ ...props }) {
               <td>{transaction.time}</td>
               <td>{transaction.level}</td>
               <td className="scrollable-column">
-                <button
+                <a
                   onClick={() => handleLinkClick(transaction.transactionHash)}
+                  className="transaction-link"
                 >
                   {transaction.transactionHash}
-                </button>
+                </a>
               </td>
             </tr>
           ))}
@@ -142,8 +143,6 @@ function StageIncome({ ...props }) {
 }
 
 export default StageIncome;
-
-
 
 // stageIncome( only visible for subadmin-true)
 // AutopoolIncome

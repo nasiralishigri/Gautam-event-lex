@@ -94,7 +94,7 @@ function LevelIncome({ ...props }) {
   console.log("Filter Transation", filteredTransactions);
 
   return (
-    <div className="PoolIncome">
+    <div className="PoolIncome-LevelIncome">
       <h1>Transaction History Of Level Income</h1>
 
       <div>
@@ -124,11 +124,12 @@ function LevelIncome({ ...props }) {
               <td>{transaction.time}</td>
               <td>{transaction.level}</td>
               <td className="scrollable-column">
-                <button
+                <a
                   onClick={() => handleLinkClick(transaction.transactionHash)}
+                  className="transaction-link"
                 >
                   {transaction.transactionHash}
-                </button>
+                </a>
               </td>
             </tr>
           ))}

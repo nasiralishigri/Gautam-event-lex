@@ -66,7 +66,7 @@ function SendBalance({ ...props }) {
   };
 
   return (
-    <div className="PoolIncome">
+    <div className="PoolIncome-SendBalance">
       <h1>Transaction History Of Send Balance</h1>
 
       <table>
@@ -83,11 +83,12 @@ function SendBalance({ ...props }) {
               <td>{transaction.referrer}</td>
               <td>{transaction.amount}</td>
               <td className="scrollable-column">
-                <button
+                <a
                   onClick={() => handleLinkClick(transaction.transactionHash)}
+                  className="transaction-link"
                 >
                   {transaction.transactionHash}
-                </button>
+                </a>
               </td>
             </tr>
           ))}
