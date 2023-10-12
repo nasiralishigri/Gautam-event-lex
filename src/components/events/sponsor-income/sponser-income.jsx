@@ -99,7 +99,7 @@ function SponserIncome({ ...props }) {
 
   return (
     <div className="PoolIncome">
-      <h1>Transaction History Of SponsorIncome</h1>
+      <h1>Transaction History Of Sponsor Income</h1>
 
       <div>
         <label>

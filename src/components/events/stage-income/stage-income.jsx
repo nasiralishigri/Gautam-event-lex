@@ -142,3 +142,12 @@ function StageIncome({ ...props }) {
 }
 
 export default StageIncome;
+
+
+
+// stageIncome( only visible for subadmin-true)
+// AutopoolIncome
+// LuckyDrawWin
+// SendBalance ( only visible for subadmin-true)
+// SponsorIncome
+// LevelsIncome
