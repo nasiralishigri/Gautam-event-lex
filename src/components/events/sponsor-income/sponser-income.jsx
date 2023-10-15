@@ -89,35 +89,22 @@ function SponserIncome({ ...props }) {
   };
 
   const [filter, setFilter] = useState("All");
-  const filteredTransactions =
-    filter === "referrer"
-      ? transactions.filter(
-          (transaction) =>
-            transaction.referrer.toLowerCase() === props.account.toLowerCase()
-        )
-      : transactions.filter(
-          (transaction) =>
-            transaction.user.toLowerCase() === props.account.toLowerCase()
-        );
+  const filteredTransactions = transactions.filter(
+    (transaction) =>
+      transaction.referrer.toLowerCase() === props.account.toLowerCase()
+  );
 
   return (
     <div className="PoolIncome-Sponsor">
       <h1>Transaction History Of Sponsor Income</h1>
 
       <div>
-        <label>
-          Filter by Referrer:
-          <select onChange={(e) => setFilter(e.target.value)}>
-            <option value="No">No</option>
-            <option value="referrer">Yes</option>
-          </select>
-        </label>
+        <label>Filter by Referrer:</label>
       </div>
       <table>
         <thead>
           <tr>
             <th>User</th>
-            <th>Referrer</th>
             <th>Time</th>
             <th>Identity</th>
             <th>Transaction Hash</th>
@@ -127,7 +114,6 @@ function SponserIncome({ ...props }) {
           {filteredTransactions.map((transaction) => (
             <tr key={transaction.user}>
               <td>{transaction.user}</td>
-              <td>{transaction.referrer}</td>
               <td>
                 {transaction.date} <br /> {transaction.time}
               </td>

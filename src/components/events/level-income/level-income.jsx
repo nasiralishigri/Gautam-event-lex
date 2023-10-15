@@ -116,7 +116,6 @@ function LevelIncome({ ...props }) {
           <thead>
             <tr>
               <th>User</th>
-              <th>Referrer</th>
               <th>Time</th>
               <th>Level</th>
               <th>Transaction Hash</th>
@@ -126,7 +125,6 @@ function LevelIncome({ ...props }) {
             {filteredTransactions.map((transaction) => (
               <tr key={transaction.user}>
                 <td>{transaction.user}</td>
-                <td>{transaction.referrer}</td>
                 <td>
                   {transaction.date} <br />
                   {transaction.time}
