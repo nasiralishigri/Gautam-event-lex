@@ -88,7 +88,6 @@ function SponserIncome({ ...props }) {
     window.open(baseUrl + url, "_blank");
   };
 
-  const [filter, setFilter] = useState("All");
   const filteredTransactions = transactions.filter(
     (transaction) =>
       transaction.referrer.toLowerCase() === props.account.toLowerCase()
