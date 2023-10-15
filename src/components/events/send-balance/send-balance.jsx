@@ -53,7 +53,13 @@ function SendBalance({ ...props }) {
         transactionHash: transaction.transaction_hash,
       }));
       console.log("Transaction:", datas);
-      setTransactions(datas);
+
+      const filteredTransactions = datas.filter(
+        (transaction) => transaction.amount != 0
+      );
+      // .log("Filter Transation", filteredTransactions);
+
+      setTransactions(filteredTransactions);
     };
 
     runApp();
