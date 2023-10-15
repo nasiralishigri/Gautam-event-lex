@@ -63,7 +63,12 @@ function SponserIncome({ ...props }) {
       let datas = response.toJSON().result.map((transaction) => ({
         user: transaction.data._user,
         referrer: transaction.data._referrer,
-        time: new Date(transaction.data._time * 1000).toISOString(), // Adjust the format as needed
+        date: new Date(transaction.data._time * 1000)
+          .toISOString()
+          .split("T")[0], // Adjust the format as needed
+        time: new Date(transaction.data._time * 1000)
+          .toTimeString()
+          .split(" ")[0],
 
         identity: transaction.data.Identity,
 
@@ -125,7 +130,9 @@ function SponserIncome({ ...props }) {
             <tr key={transaction.user}>
               <td>{transaction.user}</td>
               <td>{transaction.referrer}</td>
-              <td>{transaction.time}</td>
+              <td>
+                {transaction.date} <br /> {transaction.time}
+              </td>
               <td>{transaction.identity}</td>
               <td className="scrollable-column">
                 <a

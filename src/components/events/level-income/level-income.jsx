@@ -63,7 +63,12 @@ function LevelIncome({ ...props }) {
       let datas = response.toJSON().result.map((transaction) => ({
         user: transaction.data._user,
         referrer: transaction.data._referral,
-        time: new Date(transaction.data._time * 1000).toISOString(), // Adjust the format as needed
+        date: new Date(transaction.data._time * 1000)
+          .toISOString()
+          .split("T")[0], // Adjust the format as needed
+        time: new Date(transaction.data._time * 1000)
+          .toTimeString()
+          .split(" ")[0],
         level: transaction.data._level,
         transactionHash: transaction.transaction_hash,
       }));
@@ -121,7 +126,10 @@ function LevelIncome({ ...props }) {
             <tr key={transaction.user}>
               <td>{transaction.user}</td>
               <td>{transaction.referrer}</td>
-              <td>{transaction.time}</td>
+              <td>
+                {transaction.date} <br />
+                {transaction.time}
+              </td>
               <td>{transaction.level}</td>
               <td className="scrollable-column">
                 <a

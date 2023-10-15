@@ -44,6 +44,8 @@
     background-color: #1e2da1;
     color: #ffffff;
     padding: 10px;
+    white-space: nowrap; /* Prevent line breaks within the <td> */
+
   }
   
   .PoolIncome-autopool .scrollable-column {

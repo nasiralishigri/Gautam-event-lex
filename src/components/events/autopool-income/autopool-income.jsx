@@ -63,7 +63,13 @@ function AutoPoolIncome({ ...props }) {
       let datas = response.toJSON().result.map((transaction) => ({
         user: transaction.data.sender,
         referrer: transaction.data.referrer,
-        time: new Date(transaction.data.time * 1000).toISOString(), // Adjust the format as needed
+        date: new Date(transaction.data.time * 1000)
+          .toISOString()
+          .split("T")[0], // Adjust the format as needed
+        time: new Date(transaction.data.time * 1000)
+          .toTimeString()
+          .split(" ")[0],
+
         height: transaction.data.height,
         transactionHash: transaction.transaction_hash,
       }));
@@ -121,7 +127,10 @@ function AutoPoolIncome({ ...props }) {
             <tr key={transaction.user}>
               <td>{transaction.user}</td>
               <td>{transaction.referrer}</td>
-              <td>{transaction.time}</td>
+              <td>
+                {transaction.date} <br />
+                {transaction.time}
+              </td>
               <td>{transaction.height}</td>
               <td className="scrollable-column">
                 <a

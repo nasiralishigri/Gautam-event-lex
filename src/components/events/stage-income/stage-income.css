@@ -1,6 +1,6 @@
 .PoolIncome-Stage {
     padding: 20px;
-    background-color: #0de1af;
+    background-color: #52c5ee;
     max-height: calc(100vh - 100px); /* Adjust as needed */
     overflow-y: auto;
   }
@@ -44,6 +44,8 @@
     background-color: #1e2da1;
     color: #ffffff;
     padding: 10px;
+    white-space: nowrap; /* Prevent line breaks within the <td> */
+
   }
   
   .PoolIncome-Stage .scrollable-column {
