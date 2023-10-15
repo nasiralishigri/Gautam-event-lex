@@ -1,6 +1,6 @@
 .PoolIncome-autopool {
   padding: 20px;
-  background-color: #0a41e5;
+  background-color: #325eee;
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 100px); /* Adjust as needed */
