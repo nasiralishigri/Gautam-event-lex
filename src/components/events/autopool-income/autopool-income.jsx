@@ -7,7 +7,12 @@ import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain fro
 
 function AutoPoolIncome({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  let { web3 } = props;
+  const [filter, setFilters] = useState("all");
+
+  const handleFilterChange = (e) => {
+    // Reset the filter to the newly selected value
+    setFilters(e.target.value);
+  };
   console.log("Props :", props.account, props);
   useEffect(() => {
     const runApp = async () => {
@@ -86,29 +91,32 @@ function AutoPoolIncome({ ...props }) {
   };
 
   console.log("Transaction Data: ", transactions);
-  const [filter, setFilter] = useState("All");
   const filteredTransactions =
-    filter === "referrer"
+    filter === "all"
       ? transactions.filter(
           (transaction) =>
             transaction.referrer.toLowerCase() === props.account.toLowerCase()
         )
       : transactions.filter(
           (transaction) =>
-            transaction.user.toLowerCase() === props.account.toLowerCase()
+            transaction.referrer.toLowerCase() ===
+              props.account.toLowerCase() && transaction.height == filter
         );
-  console.log("Filter Transation", filteredTransactions);
-
   return (
     <div className="PoolIncome-autopool">
       <h1>Transaction History Of Auto Pool Income</h1>
 
       <div>
         <label>
-          Filter by Referrer:
-          <select onChange={(e) => setFilter(e.target.value)}>
-            <option value="No">No</option>
-            <option value="referrer">Yes</option>
+          Filter by Height:
+          <select value={filter} onChange={handleFilterChange}>
+            <option value="all">All</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
           </select>
         </label>
       </div>
@@ -117,7 +125,6 @@ function AutoPoolIncome({ ...props }) {
           <thead>
             <tr>
               <th>Sender</th>
-              <th>Referrer</th>
               <th>Time</th>
               <th>Height</th>
               <th>Transaction Hash</th>
@@ -127,7 +134,6 @@ function AutoPoolIncome({ ...props }) {
             {filteredTransactions.map((transaction) => (
               <tr key={transaction.user}>
                 <td>{transaction.user}</td>
-                <td>{transaction.referrer}</td>
                 <td>
                   {transaction.date} <br />
                   {transaction.time}
