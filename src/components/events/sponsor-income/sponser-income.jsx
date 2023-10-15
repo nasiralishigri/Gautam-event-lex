@@ -88,7 +88,6 @@ function SponserIncome({ ...props }) {
     window.open(baseUrl + url, "_blank");
   };
 
-  console.log("Transaction Data: ", transactions);
   const [filter, setFilter] = useState("All");
   const filteredTransactions =
     filter === "referrer"
@@ -100,7 +99,6 @@ function SponserIncome({ ...props }) {
           (transaction) =>
             transaction.user.toLowerCase() === props.account.toLowerCase()
         );
-  console.log("Filter Transation", filteredTransactions);
 
   return (
     <div className="PoolIncome-Sponsor">
