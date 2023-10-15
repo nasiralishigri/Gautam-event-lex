@@ -1,67 +1,72 @@
 .PoolIncome-Stage {
-    padding: 20px;
-    background-color: #52c5ee;
-    max-height: calc(100vh - 100px); /* Adjust as needed */
-    overflow-y: auto;
-  }
-  
-  .PoolIncome-Stage h1 {
-    font-size: 34px;
-    margin-bottom: 20px;
-    color: #08f074;
-  }
-  
-  .PoolIncome-Stage label {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-Stage select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    background-color: #1e2da1;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-Stage table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .PoolIncome-Stage th {
-    background-color: #394465;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .PoolIncome-Stage td {
-    background-color: #1e2da1;
-    color: #ffffff;
-    padding: 10px;
-    white-space: nowrap; /* Prevent line breaks within the <td> */
+  padding: 20px;
+  background-color: #0a41e5;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 100px); /* Adjust as needed */
+  overflow: hidden;
+}
 
-  }
-  
-  .PoolIncome-Stage .scrollable-column {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  .transaction-link {
-    text-decoration: underline;
-    /* color: blue; */
-    cursor: pointer;
-  }
+.PoolIncome-Stage h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  color: #08f074;
+}
+
+.PoolIncome-Stage label {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.PoolIncome-Stage select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #1e2da1;
+  color: #ffffff;
+}
+
+.PoolIncome-Stage table-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.PoolIncome-Stage table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.PoolIncome-Stage th {
+  background-color: #394465;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+.PoolIncome-Stage td {
+  background-color: #1e2da1;
+  color: #ffffff;
+  padding: 10px;
+  white-space: nowrap; /* Prevent line breaks within the <td> */
+
+}
+
+.PoolIncome-Stage .scrollable-column {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .transaction-link:hover {
   color: darkblue;
   text-decoration: underline;
 }
-  

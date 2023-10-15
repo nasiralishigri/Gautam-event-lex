@@ -111,38 +111,40 @@ function LevelIncome({ ...props }) {
           </select>
         </label>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Referrer</th>
-            <th>Time</th>
-            <th>Level</th>
-            <th>Transaction Hash</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredTransactions.map((transaction) => (
-            <tr key={transaction.user}>
-              <td>{transaction.user}</td>
-              <td>{transaction.referrer}</td>
-              <td>
-                {transaction.date} <br />
-                {transaction.time}
-              </td>
-              <td>{transaction.level}</td>
-              <td className="scrollable-column">
-                <a
-                  onClick={() => handleLinkClick(transaction.transactionHash)}
-                  className="transaction-link"
-                >
-                  {transaction.transactionHash}
-                </a>
-              </td>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Referrer</th>
+              <th>Time</th>
+              <th>Level</th>
+              <th>Transaction Hash</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredTransactions.map((transaction) => (
+              <tr key={transaction.user}>
+                <td>{transaction.user}</td>
+                <td>{transaction.referrer}</td>
+                <td>
+                  {transaction.date} <br />
+                  {transaction.time}
+                </td>
+                <td>{transaction.level}</td>
+                <td className="scrollable-column">
+                  <a
+                    onClick={() => handleLinkClick(transaction.transactionHash)}
+                    className="transaction-link"
+                  >
+                    {transaction.transactionHash}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

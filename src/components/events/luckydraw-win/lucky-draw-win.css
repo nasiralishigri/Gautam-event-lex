@@ -1,66 +1,55 @@
 .PoolIncome-luckyDraw {
-    padding: 20px;
-    background-color: #426cea;
-    max-height: calc(100vh - 100px); /* Adjust as needed */
-    overflow-y: auto;
-  }
-  
-  .PoolIncome-luckyDraw h1 {
-    font-size: 34px;
-    margin-bottom: 20px;
-    color: #08f074;
-  }
-  
-  .PoolIncome-luckyDraw label {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-luckyDraw select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    background-color: #1e2da1;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-luckyDraw table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .PoolIncome-luckyDraw th {
-    background-color: #394465;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .PoolIncome-luckyDraw td {
-    background-color: #1e2da1;
-    color: #ffffff;
-    padding: 10px;
-  }
-  
-  .PoolIncome-luckyDraw .scrollable-column {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
+  padding: 20px;
+  background-color: #0a41e5;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 100px); /* Adjust as needed */
+  overflow: hidden;
+}
 
-  .transaction-link {
-    text-decoration: underline;
-    /* color: blue; */
-    cursor: pointer;
-  }
+.PoolIncome-luckyDraw h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  color: #08f074;
+}
+
+.PoolIncome-luckyDraw table-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.PoolIncome-luckyDraw table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.PoolIncome-luckyDraw th {
+  background-color: #394465;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+.PoolIncome-luckyDraw td {
+  background-color: #1e2da1;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.PoolIncome-luckyDraw .scrollable-column {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .transaction-link:hover {
   color: darkblue;
   text-decoration: underline;
 }
-  

@@ -1,68 +1,72 @@
 .PoolIncome-LevelIncome {
-    padding: 20px;
-    background-color: #4290ea;
-    max-height: calc(100vh - 100px); /* Adjust as needed */
-    overflow-y: auto;
-  }
-  
-  .PoolIncome-LevelIncome h1 {
-    font-size: 34px;
-    margin-bottom: 20px;
-    color: #08f074;
-  }
-  
-  .PoolIncome-LevelIncome label {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-LevelIncome select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    background-color: #1e2da1;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-LevelIncome table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .PoolIncome-LevelIncome th {
-    background-color: #394465;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .PoolIncome-LevelIncome td {
-    background-color: #1e2da1;
-    color: #ffffff;
-    padding: 10px;
-    white-space: nowrap; /* Prevent line breaks within the <td> */
+  padding: 20px;
+  background-color: #0a41e5;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 100px); /* Adjust as needed */
+  overflow: hidden;
+}
 
-  }
-  
-  .PoolIncome-LevelIncome .scrollable-column {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.PoolIncome-LevelIncome h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  color: #08f074;
+}
 
-  .transaction-link {
-    text-decoration: underline;
-    /* color: blue; */
-    cursor: pointer;
-  }
+.PoolIncome-LevelIncome label {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.PoolIncome-LevelIncome select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #1e2da1;
+  color: #ffffff;
+}
+
+.PoolIncome-LevelIncome table-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.PoolIncome-LevelIncome table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.PoolIncome-LevelIncome th {
+  background-color: #394465;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+.PoolIncome-LevelIncome td {
+  background-color: #1e2da1;
+  color: #ffffff;
+  padding: 10px;
+  white-space: nowrap; /* Prevent line breaks within the <td> */
+
+}
+
+.PoolIncome-LevelIncome .scrollable-column {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .transaction-link:hover {
   color: darkblue;
   text-decoration: underline;
 }
-  
-  

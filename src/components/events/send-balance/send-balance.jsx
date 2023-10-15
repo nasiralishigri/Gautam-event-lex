@@ -68,32 +68,33 @@ function SendBalance({ ...props }) {
   return (
     <div className="PoolIncome-SendBalance">
       <h1>Transaction History Of Send Balance</h1>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Referrer</th>
-            <th>amount</th>
-            <th>Transaction Hash</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.user}>
-              <td>{transaction.referrer}</td>
-              <td>{transaction.amount}</td>
-              <td className="scrollable-column">
-                <a
-                  onClick={() => handleLinkClick(transaction.transactionHash)}
-                  className="transaction-link"
-                >
-                  {transaction.transactionHash}
-                </a>
-              </td>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Referrer</th>
+              <th>amount</th>
+              <th>Transaction Hash</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {transactions.map((transaction) => (
+              <tr key={transaction.user}>
+                <td>{transaction.referrer}</td>
+                <td>{transaction.amount}</td>
+                <td className="scrollable-column">
+                  <a
+                    onClick={() => handleLinkClick(transaction.transactionHash)}
+                    className="transaction-link"
+                  >
+                    {transaction.transactionHash}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -1,66 +1,72 @@
 .PoolIncome-autopool {
-    padding: 20px;
-    background-color: #9758ee;
-    max-height: calc(100vh - 100px); /* Adjust as needed */
-    overflow-y: auto;
-  }
-  
-  .PoolIncome-autopool h1 {
-    font-size: 34px;
-    margin-bottom: 20px;
-    color: #08f074;
-  }
-  
-  .PoolIncome-autopool label {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-autopool select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    background-color: #1e2da1;
-    color: #ffffff;
-  }
-  
-  .PoolIncome-autopool table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .PoolIncome-autopool th {
-    background-color: #394465;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .PoolIncome-autopool td {
-    background-color: #1e2da1;
-    color: #ffffff;
-    padding: 10px;
-    white-space: nowrap; /* Prevent line breaks within the <td> */
+  padding: 20px;
+  background-color: #0a41e5;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 100px); /* Adjust as needed */
+  overflow: hidden;
+}
 
-  }
-  
-  .PoolIncome-autopool .scrollable-column {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .transaction-link {
-    text-decoration: underline;
-    /* color: blue; */
-    cursor: pointer;
-  }
+.PoolIncome-autopool h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  color: #08f074;
+}
+
+.PoolIncome-autopool label {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.PoolIncome-autopool select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #1e2da1;
+  color: #ffffff;
+}
+
+.PoolIncome-autopool table-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.PoolIncome-autopool table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.PoolIncome-autopool th {
+  background-color: #394465;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+.PoolIncome-autopool td {
+  background-color: #1e2da1;
+  color: #ffffff;
+  padding: 10px;
+  white-space: nowrap; /* Prevent line breaks within the <td> */
+
+}
+
+.PoolIncome-autopool .scrollable-column {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .transaction-link:hover {
   color: darkblue;
   text-decoration: underline;
 }
-  

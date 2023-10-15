@@ -96,36 +96,37 @@ function LuckyDrawWin({ ...props }) {
   return (
     <div className="PoolIncome-luckyDraw">
       <h1>Transaction History Of Lucky Draw Win</h1>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Winner</th>
-            <th>Luky Reward</th>
-            <th>Start ID</th>
-            <th>End ID</th>
-            <th>Transaction Hash</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.luckyReward}>
-              <td>{transaction.winner}</td>
-              <td>{transaction.luckyReward}</td>
-              <td>{transaction.startID}</td>
-              <td>{transaction.endID}</td>
-              <td className="scrollable-column">
-                <a
-                  onClick={() => handleLinkClick(transaction.transactionHash)}
-                  className="transaction-link"
-                >
-                  {transaction.transactionHash}
-                </a>
-              </td>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Winner</th>
+              <th>Luky Reward</th>
+              <th>Start ID</th>
+              <th>End ID</th>
+              <th>Transaction Hash</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {transactions.map((transaction) => (
+              <tr key={transaction.luckyReward}>
+                <td>{transaction.winner}</td>
+                <td>{transaction.luckyReward}</td>
+                <td>{transaction.startID}</td>
+                <td>{transaction.endID}</td>
+                <td className="scrollable-column">
+                  <a
+                    onClick={() => handleLinkClick(transaction.transactionHash)}
+                    className="transaction-link"
+                  >
+                    {transaction.transactionHash}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
