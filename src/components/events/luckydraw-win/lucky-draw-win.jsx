@@ -18,7 +18,7 @@ function LuckyDrawWin({ ...props }) {
       const address = "0x7716dB181506939Ed6Ba6e35755A8668D8668D9A"; //"0xe184a68428072f0102f073a098af8ee7705519dc";
       const chain = EvmChain.BSC_TESTNET;
       const topic =
-        "0x2272193d6f1e216523e63936bf16e07f656833f967ff981f23695633350217c0";
+        "0xece26849988d1627dd651a357d99c795fa504210f5186090234f2930bf0215ce";
       const abi = {
         anonymous: false,
         inputs: [
