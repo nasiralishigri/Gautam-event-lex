@@ -7,8 +7,13 @@ import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain fro
 
 function LevelIncome({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  let { web3 } = props;
-  console.log("Props :", props.account, props);
+  const [filter, setFilters] = useState("All");
+
+  const handleFilterChange = (e) => {
+    // Reset the filter to the newly selected value
+    console.log("Setting Filter:", e.target.value);
+    setFilters(e.target.value);
+  };
   useEffect(() => {
     const runApp = async () => {
       if (!Moralis.Core.isStarted)
@@ -59,7 +64,6 @@ function LevelIncome({ ...props }) {
         topic,
         abi,
       });
-      console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
         user: transaction.data._user,
         referrer: transaction.data._referral,
@@ -85,18 +89,19 @@ function LevelIncome({ ...props }) {
   };
 
   console.log("Transaction Data: ", transactions);
-  const [filter, setFilter] = useState("All");
-
+  console.log("Filter is: ", filter);
   const filteredTransactions =
     filter === "all"
       ? transactions.filter(
           (transaction) =>
-            transaction.referrer.toLowerCase() === props.account.toLowerCase()
+            transaction.user.toLowerCase() ===
+            "0xb8d4217b314192857a2ba34f413008f4eadfd0f0" // props.account.toLowerCase()
         )
       : transactions.filter(
           (transaction) =>
-            transaction.referrer.toLowerCase() ===
-              props.account.toLowerCase() && transaction.level == filter
+            transaction.user.toLowerCase() ===
+              "0xb8d4217b314192857a2ba34f413008f4eadfd0f0" &&
+            transaction.level.toString() == filter.toString() //  props.account.toLowerCase()
         );
   console.log("Filter Transation", filteredTransactions);
 
@@ -107,7 +112,7 @@ function LevelIncome({ ...props }) {
       <div>
         <label>
           Filter by Level:
-          <select onChange={(e) => setFilter(e.target.value)}>
+          <select value={filter} onChange={handleFilterChange}>
             <option value="all">All</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -124,7 +129,7 @@ function LevelIncome({ ...props }) {
         <table>
           <thead>
             <tr>
-              <th>User</th>
+              <th>Referrer</th>
               <th>Time</th>
               <th>Level</th>
               <th>Transaction Hash</th>
@@ -132,8 +137,8 @@ function LevelIncome({ ...props }) {
           </thead>
           <tbody>
             {filteredTransactions.map((transaction) => (
-              <tr key={transaction.user}>
-                <td>{transaction.user}</td>
+              <tr key={transaction.Time}>
+                <td>{transaction.referrer}</td>
                 <td>
                   {transaction.date} <br />
                   {transaction.time}
