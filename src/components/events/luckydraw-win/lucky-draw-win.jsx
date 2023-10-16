@@ -62,7 +62,9 @@ function LuckyDrawWin({ ...props }) {
       console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
         winner: transaction.data.winner,
-        luckyReward: transaction.data.luckyReward,
+        luckyReward: parseFloat(
+          props.web3.utils.fromWei(transaction.data.luckyReward, "ether")
+        ).toFixed(4),
         endID: transaction.data.endID, // Adjust the format as needed
         startID: transaction.data.startID,
         transactionHash: transaction.transaction_hash,
