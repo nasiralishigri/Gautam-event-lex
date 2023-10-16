@@ -93,12 +93,12 @@ function StageIncome({ ...props }) {
     filter === "all"
       ? transactions.filter(
           (transaction) =>
-            transaction.referrer.toLowerCase() === props.account.toLowerCase()
+            transaction.user.toLowerCase() === props.account.toLowerCase()
         )
       : transactions.filter(
           (transaction) =>
-            transaction.referrer.toLowerCase() ===
-              props.account.toLowerCase() && transaction.level == filter
+            transaction.user.toLowerCase() === props.account.toLowerCase() &&
+            transaction.level == filter
         );
   console.log("Filter Transation", filteredTransactions);
 

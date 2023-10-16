@@ -94,14 +94,12 @@ function LevelIncome({ ...props }) {
     filter === "all"
       ? transactions.filter(
           (transaction) =>
-            transaction.user.toLowerCase() ===
-            "0xb8d4217b314192857a2ba34f413008f4eadfd0f0" // props.account.toLowerCase()
+            transaction.user.toLowerCase() === props.account.toLowerCase()
         )
       : transactions.filter(
           (transaction) =>
-            transaction.user.toLowerCase() ===
-              "0xb8d4217b314192857a2ba34f413008f4eadfd0f0" &&
-            transaction.level.toString() == filter.toString() //  props.account.toLowerCase()
+            transaction.user.toLowerCase() === props.account.toLowerCase() &&
+            transaction.level.toString() == filter.toString()
         );
   console.log("Filter Transation", filteredTransactions);
 
