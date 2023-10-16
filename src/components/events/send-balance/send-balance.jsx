@@ -55,7 +55,9 @@ function SendBalance({ ...props }) {
       console.log("Transaction:", datas);
 
       const filteredTransactions = datas.filter(
-        (transaction) => transaction.amount != 0
+        (transaction) =>
+          transaction.amount != 0 &&
+          transaction.referrer.toLowerCase() == props.account.toLowerCase()
       );
       // .log("Filter Transation", filteredTransactions);
 
