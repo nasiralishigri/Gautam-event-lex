@@ -1,13 +1,10 @@
 // TransactionHistory.js
 import React, { useState, useEffect } from "react";
 import "./lucky-draw-win.css";
-// import Moralis from "moralis";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain from the correct package
-
 function LuckyDrawWin({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  console.log("Props :", props.account, props);
   useEffect(() => {
     const runApp = async () => {
       if (!Moralis.Core.isStarted)
@@ -50,7 +47,6 @@ function LuckyDrawWin({ ...props }) {
         name: "LuckyDrawWin",
         type: "event",
       };
-
       let limit = 10000;
       const response = await Moralis.EvmApi.events.getContractEvents({
         address,
@@ -59,7 +55,6 @@ function LuckyDrawWin({ ...props }) {
         topic,
         abi,
       });
-      console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
         winner: transaction.data.winner,
         luckyReward: parseFloat(
@@ -69,32 +64,14 @@ function LuckyDrawWin({ ...props }) {
         startID: transaction.data.startID,
         transactionHash: transaction.transaction_hash,
       }));
-      console.log("Transaction:", datas);
       setTransactions(datas);
     };
-
     runApp();
   }, []);
-
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
     window.open(baseUrl + url, "_blank");
   };
-
-  console.log("Transaction Data: ", transactions);
-  // const [filter, setFilter] = useState("All");
-  // const filteredTransactions =
-  //   filter === "referrer"
-  //     ? transactions.filter(
-  //         (transaction) =>
-  //           transaction.referrer.toLowerCase() === props.account.toLowerCase()
-  //       )
-  //     : transactions.filter(
-  //         (transaction) =>
-  //           transaction.user.toLowerCase() === props.account.toLowerCase()
-  //       );
-  // console.log("Filter Transation", filteredTransactions);
-
   return (
     <div className="PoolIncome-luckyDraw">
       <h1>Transaction History Of Lucky Draw Win</h1>
@@ -132,5 +109,4 @@ function LuckyDrawWin({ ...props }) {
     </div>
   );
 }
-
 export default LuckyDrawWin;

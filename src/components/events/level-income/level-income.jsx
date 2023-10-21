@@ -7,7 +7,7 @@ import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain fro
 
 function LevelIncome({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  const [filter, setFilters] = useState("All");
+  const [filter, setFilters] = useState("all");
 
   const handleFilterChange = (e) => {
     // Reset the filter to the newly selected value
