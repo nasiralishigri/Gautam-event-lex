@@ -1,14 +1,9 @@
-// TransactionHistory.js
 import React, { useState, useEffect } from "react";
 import "./sponser-income.css";
-// import Moralis from "moralis";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain from the correct package
-
 function SponserIncome({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  let { web3 } = props;
-  console.log("Props :", props.account, props);
   useEffect(() => {
     const runApp = async () => {
       if (!Moralis.Core.isStarted)
@@ -59,7 +54,6 @@ function SponserIncome({ ...props }) {
         topic,
         abi,
       });
-      console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
         user: transaction.data._user,
         referrer: transaction.data._referrer,
@@ -69,30 +63,22 @@ function SponserIncome({ ...props }) {
         time: new Date(transaction.data._time * 1000)
           .toTimeString()
           .split(" ")[0],
-
         identity: transaction.data.Identity,
-
-        // identity: transaction.data.Identity,
         transactionHash: transaction.transaction_hash,
       }));
-      console.log("Transaction:", datas);
       setTransactions(datas);
     };
-
     runApp();
   }, []);
 
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
-    console.log("Tar:", url);
     window.open(baseUrl + url, "_blank");
   };
-
   const filteredTransactions = transactions.filter(
     (transaction) =>
       transaction.referrer.toLowerCase() === props.account.toLowerCase()
   );
-
   return (
     <div className="PoolIncome-Sponsor">
       <h1>Transaction History Of Sponsor Income</h1>

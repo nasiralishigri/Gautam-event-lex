@@ -1,7 +1,5 @@
-// TransactionHistory.js
 import React, { useState, useEffect } from "react";
 import "./send-balance.css";
-// import Moralis from "moralis";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain from the correct package
 
@@ -52,27 +50,19 @@ function SendBalance({ ...props }) {
         ).toFixed(4),
         transactionHash: transaction.transaction_hash,
       }));
-      console.log("Transaction:", datas);
-
       const filteredTransactions = datas.filter(
         (transaction) =>
           transaction.amount != 0 &&
           transaction.referrer.toLowerCase() == props.account.toLowerCase()
       );
-      // .log("Filter Transation", filteredTransactions);
-
       setTransactions(filteredTransactions);
     };
-
     runApp();
   }, []);
-
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
-    console.log("Tar:", url);
     window.open(baseUrl + url, "_blank");
   };
-
   return (
     <div className="PoolIncome-SendBalance">
       <h1>Transaction History Of Send Balance</h1>

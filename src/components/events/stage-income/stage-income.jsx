@@ -1,13 +1,9 @@
-// TransactionHistory.js
 import React, { useState, useEffect } from "react";
 import "./stage-income.css";
-// import Moralis from "moralis";
 import Moralis from "moralis";
 import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain from the correct package
-
 function StageIncome({ ...props }) {
   const [transactions, setTransactions] = useState([]);
-  console.log("Props :", props.account, props);
   useEffect(() => {
     const runApp = async () => {
       if (!Moralis.Core.isStarted)
@@ -58,7 +54,6 @@ function StageIncome({ ...props }) {
         topic,
         abi,
       });
-      console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
         user: transaction.data._user,
         referrer: transaction.data._referral,
@@ -68,26 +63,18 @@ function StageIncome({ ...props }) {
         time: new Date(transaction.data._time * 1000)
           .toTimeString()
           .split(" ")[0],
-
         level: transaction.data._level,
-
-        // identity: transaction.data.Identity,
         transactionHash: transaction.transaction_hash,
       }));
-      console.log("Transaction:", datas);
       setTransactions(datas);
     };
-
     runApp();
   }, []);
 
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
-    console.log("Tar:", url);
     window.open(baseUrl + url, "_blank");
   };
-
-  console.log("Transaction Data: ", transactions);
   const [filter, setFilter] = useState("all");
   const filteredTransactions =
     filter === "all"
@@ -100,12 +87,9 @@ function StageIncome({ ...props }) {
             transaction.user.toLowerCase() === props.account.toLowerCase() &&
             transaction.level == filter
         );
-  console.log("Filter Transation", filteredTransactions);
-
   return (
     <div className="PoolIncome-Stage">
       <h1>Transaction History Of Stage Income</h1>
-
       <div>
         <label>
           Filter by Level:
@@ -157,12 +141,4 @@ function StageIncome({ ...props }) {
     </div>
   );
 }
-
 export default StageIncome;
-
-// stageIncome( only visible for subadmin-true)
-// AutopoolIncome
-// LuckyDrawWin
-// SendBalance ( only visible for subadmin-true)
-// SponsorIncome
-// LevelsIncome
