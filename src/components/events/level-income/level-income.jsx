@@ -10,8 +10,6 @@ function LevelIncome({ ...props }) {
   const [filter, setFilters] = useState("all");
 
   const handleFilterChange = (e) => {
-    // Reset the filter to the newly selected value
-    console.log("Setting Filter:", e.target.value);
     setFilters(e.target.value);
   };
   useEffect(() => {
@@ -76,7 +74,6 @@ function LevelIncome({ ...props }) {
         level: transaction.data._level,
         transactionHash: transaction.transaction_hash,
       }));
-      console.log("Transaction:", datas);
       setTransactions(datas);
     };
 
@@ -87,9 +84,6 @@ function LevelIncome({ ...props }) {
     let baseUrl = "https://testnet.bscscan.com/tx/";
     window.open(baseUrl + url, "_blank");
   };
-
-  console.log("Transaction Data: ", transactions);
-  console.log("Filter is: ", filter);
   const filteredTransactions =
     filter === "all"
       ? transactions.filter(
@@ -101,12 +95,9 @@ function LevelIncome({ ...props }) {
             transaction.user.toLowerCase() === props.account.toLowerCase() &&
             transaction.level.toString() == filter.toString()
         );
-  console.log("Filter Transation", filteredTransactions);
-
   return (
     <div className="PoolIncome-LevelIncome">
       <h1>Transaction History Of Level Income</h1>
-
       <div>
         <label>
           Filter by Level:

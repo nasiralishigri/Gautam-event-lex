@@ -10,10 +10,7 @@ function AutoPoolIncome({ ...props }) {
   const [filter, setFilters] = useState("all");
 
   const handleFilterChange = (e) => {
-    // Reset the filter to the newly selected value
     setFilters(e.target.value);
-  };
-  console.log("Props :", props.account, props);
   useEffect(() => {
     const runApp = async () => {
       if (!Moralis.Core.isStarted)
@@ -64,7 +61,6 @@ function AutoPoolIncome({ ...props }) {
         topic,
         abi,
       });
-      console.log(response.toJSON());
       let datas = response.toJSON().result.map((transaction) => ({
         user: transaction.data.sender,
         referrer: transaction.data.referrer,
@@ -78,7 +74,6 @@ function AutoPoolIncome({ ...props }) {
         height: transaction.data.height,
         transactionHash: transaction.transaction_hash,
       }));
-      console.log("Transaction:", datas);
       setTransactions(datas);
     };
 
@@ -89,8 +84,6 @@ function AutoPoolIncome({ ...props }) {
     let baseUrl = "https://testnet.bscscan.com/tx/";
     window.open(baseUrl + url, "_blank");
   };
-
-  console.log("Transaction Data: ", transactions);
   const filteredTransactions =
     filter === "all"
       ? transactions.filter(
