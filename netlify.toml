@@ -2,6 +2,7 @@
 [build]
   base = "build"
   command = "npm run build"
+   publish = "build"
 
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
