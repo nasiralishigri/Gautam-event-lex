@@ -6,6 +6,7 @@ import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain fro
 function SendBalance({ ...props }) {
   const [transactions, setTransactions] = useState([]);
   const [transactionData, setTransactionData] = useState([]);
+  console.log("Props before useeffect: ", props);
   useEffect(() => {
     const runApp = async () => {
       if (!Moralis.Core.isStarted)
@@ -52,6 +53,7 @@ function SendBalance({ ...props }) {
         transactionHash: transaction.transaction_hash,
       }));
       setTransactionData(datas);
+      console.log("setting data : ", datas);
       const filteredTransactions = datas.filter(
         (transaction) =>
           transaction.amount != 0 &&
@@ -62,6 +64,7 @@ function SendBalance({ ...props }) {
     };
     runApp();
   }, [props.account]);
+  console.log("Props account :", props.account);
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
     window.open(baseUrl + url, "_blank");
