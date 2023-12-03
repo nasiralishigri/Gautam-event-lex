@@ -78,7 +78,7 @@ function LevelIncome({ ...props }) {
     };
 
     runApp();
-  }, []);
+  }, [props.account]);
 
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";

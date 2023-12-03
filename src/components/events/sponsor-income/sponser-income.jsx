@@ -69,7 +69,7 @@ function SponserIncome({ ...props }) {
       setTransactions(datas);
     };
     runApp();
-  }, []);
+  }, [props.account]);
 
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";

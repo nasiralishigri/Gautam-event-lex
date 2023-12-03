@@ -129,6 +129,7 @@ const Dashboard = () => {
   useEffect(() => {
     async function load() {
       const accounts = await web3.eth.requestAccounts();
+      console.log("Accounts Called: ", accounts);
       if (!accounts) {
         alert("please install metamask");
       }

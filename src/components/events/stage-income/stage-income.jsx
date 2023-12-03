@@ -69,7 +69,7 @@ function StageIncome({ ...props }) {
       setTransactions(datas);
     };
     runApp();
-  }, []);
+  }, [props.account]);
 
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
@@ -84,7 +84,7 @@ function StageIncome({ ...props }) {
         )
       : transactions.filter(
           (transaction) =>
-            transaction.user.toLowerCase() === props.account.toLowerCase() &&
+            transaction.user === props.account.toLowerCase() &&
             transaction.level == filter
         );
   return (

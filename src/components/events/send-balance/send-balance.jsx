@@ -5,6 +5,7 @@ import { EvmChain } from "@moralisweb3/common-evm-utils"; // Import EvmChain fro
 
 function SendBalance({ ...props }) {
   const [transactions, setTransactions] = useState([]);
+  const [transactionData, setTransactionData] = useState([]);
   useEffect(() => {
     const runApp = async () => {
       if (!Moralis.Core.isStarted)
@@ -50,15 +51,17 @@ function SendBalance({ ...props }) {
         ).toFixed(4),
         transactionHash: transaction.transaction_hash,
       }));
+      setTransactionData(datas);
       const filteredTransactions = datas.filter(
         (transaction) =>
           transaction.amount != 0 &&
-          transaction.referrer.toLowerCase() == props.account.toLowerCase()
+          transaction.referrer ==
+            (props.account ? props.account.toLowerCase() : props.account)
       );
       setTransactions(filteredTransactions);
     };
     runApp();
-  }, []);
+  }, [props.account]);
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
     window.open(baseUrl + url, "_blank");

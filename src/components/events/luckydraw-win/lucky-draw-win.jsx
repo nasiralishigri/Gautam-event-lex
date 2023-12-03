@@ -67,7 +67,7 @@ function LuckyDrawWin({ ...props }) {
       setTransactions(datas);
     };
     runApp();
-  }, []);
+  }, [props.account]);
   const handleLinkClick = (url) => {
     let baseUrl = "https://testnet.bscscan.com/tx/";
     window.open(baseUrl + url, "_blank");
